@@ -1,0 +1,753 @@
+$desktop: 1024px;
+$tablet: 786px;
+$mobile: 480px;
+$Smobile: 380px;
+$vSmallmobile: 280px;
+/* -------------------colors --------------*/
+/* primary colors */
+$brightRed: hsl(12, 88%, 59%);
+$darkBlue: hsl(228, 39%, 23%);
+/* secondary colors */
+$darkGrayishBlue: hsl(227, 12%, 61%);
+$veryDarkBlue: hsl(233, 12%, 13%);
+$veryPaleRed: hsl(13, 100%, 96%);
+$varyLightGray: hsl(0, 0%, 98%);
+$white: #fff;
+$hoverButton: #fc8e75;
+/* mixin */
+@mixin dFlex($flex,$jic,$aic,$flexcolumn) {
+    display: $flex;
+    justify-content: $jic;
+    align-items: $aic;
+    flex-direction: $flexcolumn;
+ }
+
+@mixin dFlex1($flex1,$jic1,$aic1) {
+   display: $flex1;
+   justify-content: $jic1;
+   align-items: $aic1;
+
+}
+
+@mixin dFlex2($flex2,$jic2) {
+    display: $flex2;
+    justify-content: $jic2; 
+ }
+ /* button mixin */
+@mixin btn($backcolor, $txtcolor) {
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    background-color: $backcolor;
+    color: $txtcolor;
+    font-weight: 500;
+}
+/* background image */
+@mixin backg($size, $pos1, $pos2){
+    background-image: url(../images/bg-tablet-pattern.svg);
+    background-size: $size auto;
+    background-repeat: no-repeat;
+    background-position: $pos1 $pos2;
+}
+/* -------------------------------------------------------------------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam', sans-serif;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+.hero{
+
+    @include backg(57%, 120%, -160px);
+    @media screen and (max-width: $tablet){
+      
+        @include backg(67%, 130%, -80px);
+    }
+    @media screen and (max-width: $mobile){
+        height: 60vh;
+        @include backg(87%, 170%, -50px);
+    }
+    @media screen and (max-width: $Smobile){
+    
+        @include backg(87%, 170%, -20px);
+    }
+    header{
+      @include dFlex2(flex, center);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding: 3% 8%;
+      font-size: 15px;
+   
+      @media screen and (max-width: $desktop){
+          padding: 2% 5%;
+      } 
+      @media screen and (max-width: $tablet){
+        padding: 2% 4%;
+    } 
+      .logo-img{
+        width: 25%;
+        @include dFlex2(flex, flex-start);
+        color: $white;
+        @media screen and (max-width: $desktop){
+            width: 40%;
+        } 
+    }
+      nav{
+        width: 50%;
+        @include dFlex1(flex, center, center);
+        @media screen and (max-width: $desktop){
+            width: 60%;
+            justify-content: flex-end;
+            .toggle-nav {
+                display: inline-block;
+                cursor: pointer;
+                .bar1, .bar2, .bar3 {
+                    width: 35px;
+                    height: 5px;
+                    background-color: $veryDarkBlue;
+                    margin: 6px 0;
+                    transition: 0.4s;
+                  }
+                  .change .bar1 {
+                    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+                    transform: rotate(-45deg) translate(-9px, 6px);
+                  }
+                  
+                  .change .bar2 {opacity: 0;}
+                  
+                  .change .bar3 {
+                    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+                    transform: rotate(45deg) translate(-8px, -8px);
+                  }
+              }
+        } 
+        @media screen and (max-width: $tablet){       
+            .toggle-nav {     
+                .bar1, .bar2, .bar3 {
+                    width: 28px;
+                    height: 3px;
+                   
+                  }
+                  .change .bar1 {
+                    -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+                    transform: rotate(-45deg) translate(-9px, 6px);
+                  }
+
+              }
+        } 
+
+        @media screen and (max-width: $mobile){
+            width: 80%;
+           
+            @include dFlex1(flex, flex-end, center);
+        } 
+        ul  {
+            @media screen and (max-width: $desktop){
+                display: none;
+                &.responsive{
+               
+                    @include dFlex(flex, center, center, column);
+                    position: absolute;
+                    top: 12%;
+                    left: 35%;
+                    background-color: $white;
+                    color: $veryDarkBlue;
+                   /*  padding: 10px 15px; */
+                   width: 40%;
+                   box-shadow: 40px 100px 200px 0 rgba(0, 0, 0, 0.2), 40px 100px 300px 0 rgba(0, 0, 0, 0.19);
+                }
+            }
+            @media screen and (max-width: $tablet){
+                width: 60%;
+               
+                @include dFlex1(none, flex-end,center);
+                &.responsive{
+                    top: 10%;
+                    left: 25%;
+                   /*  padding: 10px 15px; */
+                   width: 50%;
+                }
+            } 
+
+            @media screen and (max-width: $mobile){
+               &.responsive{
+                position: absolute;
+                top: 10%;
+                left: 15%;
+               /*  padding: 10px 15px; */
+               width: 70%;
+               }
+            } 
+            li{
+                display: inline-flex;
+                padding: 0 0.5rem;
+                @media screen and (max-width: $desktop){
+                    display: block;
+                    text-align: center;
+                    margin: 10px 0;
+                    font-size: large;
+                    width: inherit;
+                }
+                a{
+                    text-decoration: none;
+                    color: $darkBlue;
+                    @media screen and (max-width: $desktop){
+                        &:hover{
+                            color: $darkGrayishBlue;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    .header-button{
+
+        width: 25%;
+       
+        @include dFlex2(flex, flex-end);
+        @media screen and (max-width: $desktop){
+           width: 0;
+           display: none;
+        }
+        button{
+        
+            @include btn($brightRed, $varyLightGray);
+            &:hover{
+                background-color: $hoverButton;
+             }
+        }
+        
+    }
+    
+    }
+
+/*----------------herosection_____________________-----*/ 
+.herosection{
+    @media screen and (max-width: $mobile){
+     
+       height: inherit;
+        @include backg(67%, 180%, 320px);
+    }
+    .container{
+        display: flex; 
+        padding: 0 8%;
+        @media screen and (max-width: $tablet){
+            padding: 0 4%; 
+            flex-direction: column-reverse;
+            align-items: center;
+        } 
+        .hero-abt{ 
+            
+            @include dFlex(flex, center, unset, column);
+            @media screen and (max-width: $mobile){
+                width: 100%;
+                text-align: center;
+            } 
+            h1{ 
+                font-size: 50px;
+                color: $darkBlue;
+                line-height: 3.5rem;
+                
+                @media screen and (max-width: $desktop){
+                    font-size: 2.4rem;
+                 }
+                 @media screen and (max-width: $tablet){
+                    font-size: 2.0rem;
+                    line-height: 2.5rem;
+                    text-align: center;
+                } 
+               
+              
+            } 
+            p{ 
+                 margin-top: 1rem;
+                 color: $darkGrayishBlue;   
+                 @media screen and (max-width: $tablet){
+                    text-align: center;
+                } 
+                 
+                         
+             } 
+             .btn-started{
+                margin: 4% 0;
+                @media screen and (max-width: $tablet){
+                    
+                    @include dFlex2(flex, center);
+                } 
+                button{
+            
+                    @include btn($brightRed, $varyLightGray);
+                    &:hover{
+                        background-color: $hoverButton;
+                     }
+                 }
+            }
+         }
+         .hero-stat{
+            padding-top: 5%;
+            @media screen and (max-width: $desktop){
+                img{
+                    width: 480px;
+                    height: 425px;
+                }
+             }
+             @media screen and (max-width: $tablet){
+                img{
+                    width: 380px;
+                    height: 325px;
+                }
+            } 
+
+            @media screen and (max-width: $mobile){
+                img{
+                    width: 280px;
+                    height: 225px;
+                }
+            }
+            @media screen and (max-width: $vSmallmobile){
+               img{
+               width: 200px;
+               height: 175px;
+                }
+               
+               }
+        }
+    }
+}
+
+}
+
+
+/*----------------about_____________________-----*/ 
+.backcover{
+   
+   position: relative;
+   @include backg(57%, -80%, 400px);
+   @media screen and (max-width: $tablet){
+    background-image: unset;
+
+   }
+   
+ .about{
+    display: flex;
+    padding: 10% 10%;
+    height: 100vh;
+ 
+    @media screen and (max-width: $desktop){
+        height: fit-content;
+        padding: 10% 5% 10% 5%;
+     }
+     @media screen and (max-width: $tablet){
+    height: fit-content;
+    flex-flow: column;
+    @include backg(67%, 180%, -10px);
+    } 
+  
+    @media screen and (max-width: $mobile){
+        background-image: unset;
+      
+    }
+    
+    @media screen and (max-width: $mobile){
+      
+    }
+    .about-us{
+        padding-right: 10%;
+        width: 50%;
+        @media screen and (max-width: $tablet){
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            width: 100%;
+            margin-top: 0%;
+            text-align: center;
+         
+            } 
+        h1{
+            color: $darkBlue;
+            line-height: 2.5rem;
+
+        }
+        p{
+            margin-top: 1rem;
+            margin-right: 15%;
+            color: $darkGrayishBlue;
+            @media screen and (max-width: $tablet){
+                text-align: center;
+                margin-right: 0;             
+                } 
+        }
+    }
+
+    .about-detail{
+       padding-right: 4%;
+       width: 50%;
+       @media screen and (max-width: $tablet){
+        
+        @include dFlex(flex, unset, center,column);
+        width: 100%;
+        margin-top: 5%;       
+        } 
+        @media screen and (max-width: $mobile){
+            padding-right: 0%;
+            width: 100%;
+        }
+       .detail1{
+       
+      @include dFlex(flex, unset, unset, column);
+        .det{
+            
+           @include dFlex1(flex, unset, center);
+            .cunter{
+                .count{
+                    padding: 5px 20px;
+                    background-color: $brightRed;
+                    color: $white;
+                    border-radius: 50px;
+                    @media screen and (max-width: $mobile){
+                        padding: 5px 20px;
+                        background-color: $brightRed;
+                        color: $white;
+                        border-radius: 50px;
+                    }
+                }
+            }
+            .detailhead{
+                margin-left: 2%;
+                font-weight: bold;
+                color: $darkBlue;
+                @media screen and (max-width: $mobile){
+                    margin-left: 0%;
+                    padding: 5px 0;
+                    color: $darkBlue;
+                    width: 100%;
+                    background-color: hsla(12, 88%, 59%, 0.425);
+                }
+            }
+        }
+
+        .detail{
+            display: flex;
+            .sp{
+                margin: 0 20px;
+                @media screen and (max-width: $mobile){ 
+                        margin: 0 0px;
+                }
+            }
+            .detail-para{
+                 margin-left: 6%;
+                 color: $darkGrayishBlue;
+                 margin-top: 0.5rem;
+                 font-size: 15px;
+                 margin-bottom: 4%;
+                @media screen and (max-width: $desktop){
+                    margin-left: 7%;
+                 }
+                @media screen and (max-width: $tablet){
+                    margin-left: 5%;
+                         
+                    }
+                @media screen and (max-width: $mobile){ 
+                        margin-left: 0%;                
+                } 
+             }
+             
+        }
+    }
+    }
+
+}
+
+
+/*----------------Testimonial_____________________-----*/ 
+
+.testimonial{
+    width: 100%;
+    
+    @include dFlex(flex, center, center, column);
+    padding: 10% 0%;
+    @media screen and (max-width: $tablet){
+        padding: 10% 0% 10% 0;
+             
+        }
+    h1{
+        text-align: center;
+        margin: 6% 0 1% 0;
+        color: $veryDarkBlue;
+    
+    }
+
+    .swiper-container {
+        width: 100%;
+       height: 60vh;
+    
+       @media screen and (max-width: $desktop){
+        height: 40vh;
+             
+        }
+    
+       .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        // background: $white;
+    
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+      
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        .slide{
+            background-color: $varyLightGray;
+           position: relative;    
+           .img-slide{
+            position: relative;
+            img{
+                margin-top: -10%;
+                width: 80px;
+                height: 80px;
+                
+            }
+            }   
+            .content{
+                padding: 5% 5%;
+                @media screen and (max-width: $tablet){
+                    
+                        padding: 5% 10%;
+                 
+                    } 
+                p{
+                    font-size: 13px;
+                    line-height: 1.4rem;
+                    margin: 1rem 0;
+                    color: $darkGrayishBlue;
+                }
+            }
+               
+        }
+      }
+      }
+      .testimonial-button{
+        margin: 4%;
+        button{
+            @include btn($brightRed, $varyLightGray);
+            &:hover{
+                background-color: $hoverButton;
+             }
+        }
+    }  
+}
+}
+/*----------------addd_____________________-----*/ 
+
+.ad{
+    width: 100%;
+    padding: 3% 10%;
+    background: $brightRed;
+    @media screen and (max-width: $desktop){
+        padding: 3% 5%;
+     }
+    .ad-content{
+        
+        @include dFlex2(flex, space-between);
+        @media screen and (max-width: $mobile){ 
+            flex-direction: column;
+            align-items: center;               
+    } 
+        .ad-content-1{
+            width: 40%;
+            color: $white;
+            
+            @media screen and (max-width: $desktop){
+                width: 50%;
+                
+             }
+             @media screen and (max-width: $tablet){
+                    
+               width: 60%;
+               h1{
+                font-size: 26px;
+            }
+        }
+            @media screen and (max-width: $mobile){ 
+                width: 100%;
+                margin: 5% 0;      
+                text-align: center;      
+            } 
+         
+        }
+      
+         .ad-content-2{
+            width: 60%;
+            @include dFlex1(flex, flex-end, center);
+            @media screen and (max-width: $mobile){  
+            justify-content: center;  
+            } 
+            button{
+                @include btn($varyLightGray, $brightRed);
+                &:hover{
+                    background-color: $veryPaleRed;
+                 }
+                @media screen and (max-width: $mobile){ 
+                    margin-bottom: 5%;      
+                    } 
+                }
+            }
+      
+            }
+        }
+    
+      
+
+ /*----------------footer_____________________-----*/ 
+
+ footer{
+  
+    background: $veryDarkBlue;
+    .container{
+        padding: 5% 10%;
+     
+       @include dFlex2(flex, space-between);
+        position: relative;
+       @media screen and (max-width: $desktop){
+        padding: 5% 5%;
+        
+     }
+     @media screen and (max-width: $tablet){               
+     padding: 5% 10%;
+     display: flex;
+     flex-flow: column-reverse wrap;
+     align-items: center;
+     }
+  
+     @media screen and (max-width: $mobile){ 
+        padding: 5% 5%;    
+        } 
+       .col-special{
+        
+        @include dFlex(flex, space-between, unset, column);
+        width: 25%;
+        @media screen and (max-width: $tablet){               
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+        }
+        
+        .img-logo{
+            
+            @include dFlex2(flex, center);
+            @media screen and (max-width: $tablet){               
+                margin: 10% 0 5% 0;
+                }
+             
+        }
+
+        .icons{
+          
+            @include dFlex2(flex, center);
+            img{
+                padding: 0 2px;
+                &:hover{
+                    transform: scale(1.2);
+                    transition-duration: 0.2s;
+                 }
+                @media screen and (max-width: $tablet){               
+                    padding: 0 25px;
+                    }
+                    @media screen and (max-width: $mobile){ 
+                        padding: 0 14px;   
+                        } 
+             }
+        }
+    }
+
+    .navList{
+       
+        @include dFlex2(flex, space-around);
+        width: 40%;
+        @media screen and (max-width: $tablet){                
+             width: 100%;
+             margin: 10% 0;
+            }
+            
+        .col-1 {
+            nav{
+                ul{
+                    li{
+                        padding: 5% 0;
+                        list-style-type: none;
+                        a{
+                            color: $white;
+                            text-decoration: none;
+ 
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .form{
+        width: 35%;
+
+        @media screen and (max-width: $desktop){
+            .container{
+                @include dFlex2(flex, center);
+            }
+         }
+         @media screen and (max-width: $tablet){                
+            width: 100%;
+            margin-top: 5%; 
+            .container{
+                display: flex;
+                flex-direction: column;
+            }      
+           }
+           @media screen and (max-width: $mobile){ 
+            padding: 0 14px;   
+            } 
+        .searchme{
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            padding: 10px 15px;
+            width: 100%;
+          @media screen and (max-width: $tablet){                
+            width: 100%; 
+           }
+        }
+        button{
+            padding: 10px 20px;
+            background-color: $brightRed;
+            color: white;
+            border-radius: 50px;
+            border: none;
+            font-weight: bold;
+            &:hover{
+                background-color: $hoverButton;
+             }
+            @media screen and (max-width: $tablet){                
+                padding: 10px 40px;
+                margin-top: 10px;
+               }
+        }
+    }
+
+    }
+}
